@@ -1,0 +1,8 @@
+.DS_Store
+.gradle
+build
+signing.gradle
+*.iml
+/.idea
+/local.properties
+/release.keystore

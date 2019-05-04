@@ -1,0 +1,45 @@
+apply plugin: 'com.android.application'
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: '*.jar')
+
+    implementation "androidx.appcompat:appcompat:${rootProject.ext.androidXAppCompatVersion}"
+    implementation "androidx.lifecycle:lifecycle-extensions:${rootProject.ext.androidXLifecycleVersion}"
+    implementation "androidx.loader:loader:${rootProject.ext.androidXLoaderVersion}"
+    implementation "androidx.preference:preference:${rootProject.ext.androidXPreferenceVersion}"
+    implementation "androidx.room:room-runtime:${rootProject.ext.androidXRoomVersion}"
+
+    annotationProcessor "androidx.lifecycle:lifecycle-compiler:${rootProject.ext.androidXLifecycleVersion}"
+    annotationProcessor "androidx.room:room-compiler:${rootProject.ext.androidXRoomVersion}"
+}
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+
+    defaultConfig {
+        versionCode 1
+        versionName '0.2'
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = ["room.schemaLocation": "$projectDir/schemas".toString()]
+            }
+        }
+    }
+
+
+
+    buildTypes {
+      release {
+        minifyEnabled false
+      }
+    }
+
+    compileOptions {
+        sourceCompatibility = '1.8'
+        targetCompatibility = '1.8'
+    }
+}

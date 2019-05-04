@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">feedreader</string>
+
+    <string name="list_empty">No articles found.</string>
+    <string name="list_loading">Loading articles…</string>
+    <string name="list_loading_failed">Loading failed.</string>
+
+    <string name="entry_title">Article detail</string>
+    <string name="entry_date_author">%1$s by %2$s</string>
+    <string name="entry_unknown_author">Unknown author</string>
+    <string name="entry_view_full">View full article</string>
+    <string name="entry_not_found">Article not found</string>
+    <string name="entry_not_found_desc">The article was not found. Please return back and select another article.</string>
+    <string name="entry_not_loaded">The article is not loaded yet, please wait.</string>
+    <string name="entry_loading">Loading article…</string>
+
+    <string name="menu_configure_feeds">Configure feeds</string>
+    <string name="menu_about">About</string>
+    <string name="menu_refresh">Refresh</string>
+    <string name="menu_share_article">Share</string>
+    <string name="menu_add_feed">Add feed</string>
+
+    <string name="share_chooser">Choose app to share</string>
+    <string name="share_subject">Article to read: %s</string>
+    <string name="share_text">I found an awesome article to read, check it here: %s</string>
+
+    <string name="feed_configuration">Configure feeds</string>
+    <string name="feed_configuration_unknown_feed_title"><i>Feed title unknown</i></string>
+    <string name="feed_configuration_no_feeds">No feeds found, add the first one with the + icon.</string>
+
+    <string name="add_feed_dialog_title">Add Feed</string>
+    <string name="add_feed_hint">Type feed url</string>
+    <string name="add_feed_added">Feed added</string>
+    <string name="add_feed_url_empty">Feed downloadUrl was empty</string>
+    <string name="add_feed_ok">Add</string>
+    <string name="add_feed_cancel">Cancel</string>
+
+    <string name="delete_feed_dialog_title">Delete Feed</string>
+    <string name="delete_feed_text">Do you want to delete the feed?</string>
+    <string name="delete_feed_deleted">The feed was deleted</string>
+    <string name="delete_feed_ok">Delete</string>
+    <string name="delete_feed_cancel">Cancel</string>
+
+    <string name="about_version">version %s</string>
+    <string name="about_version_unknown">unknown</string>
+    <string name="about_text"><b>feedreader</b> is a sample app created for a purpose of teaching students of CTU FIT in Prague how to create applications for Android OS.</string>
+    <string name="about_copyright">©%d CTU FIT</string>
+    <string name="about_close">Okay, thanks!</string>
+
+    <string name="sample_title">Sample title</string>
+    <string name="sample_summary">Sample article summary.</string>
+    <string name="sample_date_author">2 days ago by Foo Bar</string>
+    <string name="sample_url">http://android-developers.blogspot.com/atom.xml</string>
+
+    <string name="select_article">Select an article</string>
+</resources>
