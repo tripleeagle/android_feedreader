@@ -44,7 +44,6 @@ public class ArticlesListFragment extends Fragment implements FeedEntriesAdapter
 
     public static final String EXTRA_LARGE_SCREEN = "largeScreen";
 
-
     @SuppressLint("InflateParams")
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -52,11 +51,9 @@ public class ArticlesListFragment extends Fragment implements FeedEntriesAdapter
 
         viewModel = ViewModelProviders.of(this).get(ArticlesListViewModel.class);
         downloadFeedsViewModel = ViewModelProviders.of(this).get(DownloadFeedsViewModel.class);
-
-        progressActionView =
-                LayoutInflater.from(getActivity()).inflate(R.layout.action_view_progress, null);
-
+        progressActionView = LayoutInflater.from(getActivity()).inflate(R.layout.action_view_progress, null);
         wideScreen = getArguments().getBoolean(EXTRA_LARGE_SCREEN);
+
         // Retains the ParseFeedTask and the FeedEntriesAdapter with loaded data.
         setRetainInstance(true);
         setHasOptionsMenu(true);
@@ -139,7 +136,6 @@ public class ArticlesListFragment extends Fragment implements FeedEntriesAdapter
             fragment2.setArguments(bundle);
 
             getFragmentManager().beginTransaction().replace(R.id.fragmentRightPlaceHolder, fragment2).commit();
-
         } else {
             ArticleDetailActivity.startActivity(getActivity(), entry.getId());
         }

@@ -8,6 +8,7 @@ import android.text.Html;
 import android.text.TextUtils;
 import android.text.format.DateUtils;
 import android.text.method.LinkMovementMethod;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -33,12 +34,9 @@ import cz.cvut.fit.biand.feedreader.repository.entities.Entry;
 public class ArticleDetailFragment extends Fragment {
 
     static final String ARG_ID = "id";
-
     private ArticleDetailViewModel viewModel;
-
     private View container;
     private View progress;
-
     private TextView title;
     private TextView date;
     private TextView text;
@@ -49,6 +47,7 @@ public class ArticleDetailFragment extends Fragment {
         super.onCreate(savedInstanceState);
         viewModel = ViewModelProviders.of(this).get(ArticleDetailViewModel.class);
         id = getArguments().getLong(ARG_ID);
+        Log.d("TAG","id = " + id );
         viewModel.setEntryId(getArguments().getLong(ARG_ID));
         setHasOptionsMenu(true);
     }
@@ -65,8 +64,8 @@ public class ArticleDetailFragment extends Fragment {
     @Override
     public void onSaveInstanceState(@NonNull Bundle outState) {
         outState.putLong(ARG_ID,id);
+        Log.d("TAG","saved id = " + id );
         super.onSaveInstanceState(outState);
-
     }
 
     @Override

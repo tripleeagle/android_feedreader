@@ -29,8 +29,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        addFragments();
+        if ( savedInstanceState == null) {
+            addFragments();
+        }
     }
 
     /**
@@ -40,12 +41,13 @@ public class MainActivity extends AppCompatActivity {
         FragmentManager manager = getSupportFragmentManager();
         if ( findViewById(R.id.container) != null && manager.findFragmentById(R.id.container) == null) {
             FragmentTransaction transaction = manager.beginTransaction();
-            transaction.add(R.id.fragment_list_wrapper,createArticleListFragment(false));
+            transaction.replace(R.id.fragment_list_wrapper,createArticleListFragment(false));
             transaction.commit();
         }
         if ( findViewById(R.id.large_container) != null && manager.findFragmentById(R.id.large_container) == null ){
+            Log.d("TAG","add once again");
             FragmentTransaction transaction = manager.beginTransaction();
-            transaction.add(R.id.fragment_list_wrapper,createArticleListFragment(true));
+            transaction.replace(R.id.fragment_list_wrapper,createArticleListFragment(true));
             transaction.replace(R.id.fragmentRightPlaceHolder,createArticleDetailFragment());
             transaction.commit();
         }
