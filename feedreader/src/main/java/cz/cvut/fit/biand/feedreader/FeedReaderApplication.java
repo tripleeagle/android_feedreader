@@ -33,7 +33,7 @@ public class FeedReaderApplication extends Application {
         ComponentName componentName = new ComponentName(this, DownloadFeedJobService.class);
 
         jobScheduler.schedule(new JobInfo.Builder(1, componentName)
-                .setPeriodic(1000 * 60 * 15)
+                .setPeriodic(1000 * 60 * 15) //15 minutes
                 .setRequiredNetworkType(JobInfo.NETWORK_TYPE_ANY)
                 .build());
     }

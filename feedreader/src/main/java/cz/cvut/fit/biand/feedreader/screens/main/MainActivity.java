@@ -43,7 +43,6 @@ public class MainActivity extends AppCompatActivity {
             transaction.commit();
         }
         if (findViewById(R.id.large_container) != null && manager.findFragmentById(R.id.large_container) == null) {
-            Log.d("TAG", "add once again");
             FragmentTransaction transaction = manager.beginTransaction();
             transaction.replace(R.id.fragment_list_wrapper, createArticleListFragment(true));
             transaction.replace(R.id.fragmentRightPlaceHolder, createArticleDetailFragment());

@@ -48,7 +48,6 @@ public class ArticleDetailFragment extends Fragment {
         super.onCreate(savedInstanceState);
         viewModel = ViewModelProviders.of(this).get(ArticleDetailViewModel.class);
         id = getArguments().getLong(ARG_ID);
-        Log.d("TAG", "id = " + id);
         viewModel.setEntryId(getArguments().getLong(ARG_ID));
         setHasOptionsMenu(true);
     }
@@ -65,7 +64,6 @@ public class ArticleDetailFragment extends Fragment {
     @Override
     public void onSaveInstanceState(@NonNull Bundle outState) {
         outState.putLong(ARG_ID, id);
-        Log.d("TAG", "saved id = " + id);
         super.onSaveInstanceState(outState);
     }
 

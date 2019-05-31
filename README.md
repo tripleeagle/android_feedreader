@@ -1,17 +1,18 @@
-FeedReader
-==========
+# FeedReader
 
-FeedReader is a small demonstrational app that reads RSS feeds and presents the articles to the user.
+FeedReader is a small app that reads RSS feeds and presents the articles to the user.
 
-How to build
-------------
-Setup SDK:
+## UI for tablets
+<img src="docs_resources/tablet_vertical.png" width="280"/>
+<img src="docs_resources/tablet_horizontal_home_screen.png" width="280"/>
 
-    cd feedreader
-    echo "sdk.dir=PATH/TO/YOUR/SDK" > local.properties
+## UI for phones
+<img src="docs_resources/phone_home_screen.png" width="280"/>
+<img src="docs_resources/phone_feed_entry.png" width="280"/>
+<img src="docs_resources/phone_add_feed.png" width="280"/>
+<img src="docs_resources/phone_configure_feeds.png" width="280"/>
 
-Also don't forget to install Android API 19 and Build-tools rev 19.0.1
 
-Build with:
-
-    ./gradlew assembleDebug
+## Technologies and Libraries:
+- ROOT Library for local storing feeds
+- Android ROME for downloading RSS and ATOM feeds
