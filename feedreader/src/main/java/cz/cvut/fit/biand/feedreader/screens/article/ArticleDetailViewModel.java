@@ -19,11 +19,6 @@ public class ArticleDetailViewModel extends AndroidViewModel {
         repository = FeedReaderApplication.get(application).getRepository();
     }
 
-    /**
-     * Sets the entry id.
-     *
-     * @throws IllegalStateException if the method was called before.
-     */
     void setEntryId(long entryId) {
         /*if (entry != null) {
             throw new IllegalStateException("entryId can be set only once!");
@@ -31,11 +26,6 @@ public class ArticleDetailViewModel extends AndroidViewModel {
         entry = repository.getEntry(entryId);
     }
 
-    /**
-     * Gets the article.
-     *
-     * @throws IllegalStateException if setEntryId was not called.
-     */
     public LiveData<Entry> getArticle() {
         if (entry == null) {
             throw new IllegalStateException("setEntryId was not called!");

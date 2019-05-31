@@ -25,12 +25,10 @@ import cz.cvut.fit.biand.feedreader.repository.services.DownloadStatus;
 public class Repository {
     private final FeedDao feedDao;
     private final EntryDao entryDao;
-    // We can keep just one instance of this that we'll return to all callers, serving as
-    // in-memory-cache, because there's no caller-specific query filtering the data.
+
     private final LiveData<List<Feed>> feedsLiveData;
-    // We can keep just one instance of this that we'll return to all callers, serving as
-    // in-memory-cache, because there's no caller-specific query filtering the data.
     private final LiveData<List<Entry>> entriesLiveData;
+
     private final MutableLiveData<DownloadStatus> downloadStatus = new MutableLiveData<>();
 
     public Repository(FeedDao feedDao, EntryDao entryDao) {
@@ -40,16 +38,10 @@ public class Repository {
         entriesLiveData = entryDao.getAllEntries();
     }
 
-    /**
-     * Gets list of all feeds.
-     */
     public LiveData<List<Feed>> getAllFeeds() {
         return feedsLiveData;
     }
 
-    /**
-     * Gets list of all feeds' download urls.
-     */
     public LiveData<List<String>> getAllFeedDownloadUrls() {
         return Transformations.map(getAllFeeds(), feeds -> {
             List<String> urls = new ArrayList<>(feeds.size());
@@ -60,40 +52,22 @@ public class Repository {
         });
     }
 
-    /**
-     * Gets list of all entries from all feeds.
-     */
     public LiveData<List<Entry>> getAllEntries() {
         return entriesLiveData;
     }
 
-    /**
-     * Gets entry by its {@code id}.
-     */
     public LiveData<Entry> getEntry(long id) {
         return entryDao.findEntryById(id);
     }
 
-    /**
-     * Asynchronously deletes feed by its {@code id}. Also deletes all of those feed's entries.
-     */
     public void deleteFeed(long id) {
         new AsyncRoomOp<>(feedDao::deleteFeed).execute(id);
     }
 
-    /**
-     * Asynchronously saves {@code feed}.
-     */
     public void saveFeed(Feed feed) {
         new AsyncRoomOp<>(feedDao::insertFeed).execute(feed);
     }
 
-    /**
-     * Saves the SyndFeed. Overwrites any saved feed with the same uri/id.
-     *
-     * @param url      The url of the link.
-     * @param syndFeed The feed to save.
-     */
     @WorkerThread
     @SuppressWarnings("unchecked") // SyndFeed is unfortunately not generic enough.
     public void saveSyndFeed(String url, SyndFeed syndFeed) {
@@ -154,13 +128,6 @@ public class Repository {
                          syndEntry.getAuthor());
     }
 
-    /**
-     * Prepares the entry's summary by stripping all html tags from the description/summary text.
-     * Also trims it to 300 chars.
-     *
-     * @param text The original description/summary text.
-     * @return The summary text.
-     */
     private String prepareSummary(String text) {
         text = text.replaceAll("(?s)<style[^>]*>.*?</style>", "");
         text = text.replaceAll("(?s)<img.*?/>", "");
@@ -171,12 +138,6 @@ public class Repository {
         return text.trim();
     }
 
-
-    /**
-     * Deletes entries older than 1 month.
-     *
-     * @param feedLink The link of the feed to delete the entries from.
-     */
     @WorkerThread
     public void deleteOldEntries(String feedLink) {
         Calendar date = Calendar.getInstance();

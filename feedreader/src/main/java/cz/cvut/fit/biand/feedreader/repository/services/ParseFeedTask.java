@@ -70,7 +70,6 @@ public class ParseFeedTask extends AsyncTask<String, Void, Boolean> {
     // It's safe, because SyndFeed.getEntries() always returns List of SyndEntry objects.
     @SuppressWarnings("unchecked")
     protected void onPostExecute(Boolean success) {
-        Log.d ("TAG","onpost execute");
         downloadStatus.setValue(success ? DownloadStatus.FINISHED : DownloadStatus.FAILED);
     }
 }

@@ -5,7 +5,6 @@ import android.app.job.JobInfo;
 import android.app.job.JobScheduler;
 import android.content.ComponentName;
 import android.content.Context;
-import android.util.Log;
 
 import cz.cvut.fit.biand.feedreader.repository.Repository;
 import cz.cvut.fit.biand.feedreader.repository.db.FeedReaderDatabase;
@@ -14,9 +13,6 @@ import cz.cvut.fit.biand.feedreader.repository.services.DownloadFeedJobService;
 public class FeedReaderApplication extends Application {
     private static Repository repository;
 
-    /**
-     * Gets the instance of {@link FeedReaderApplication} from {@code context}.
-     */
     public static FeedReaderApplication get(Context context) {
         return (FeedReaderApplication) context.getApplicationContext();
     }
@@ -29,7 +25,6 @@ public class FeedReaderApplication extends Application {
     }
 
     private void addDownloadSchedule() {
-        Log.d ("TAG","add addDownloadSchedule");
         JobScheduler jobScheduler = (JobScheduler) getSystemService(JOB_SCHEDULER_SERVICE);
         ComponentName componentName = new ComponentName(this, DownloadFeedJobService.class);
 

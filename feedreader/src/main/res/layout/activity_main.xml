@@ -1,11 +1,13 @@
 <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:id="@+id/container">
 
-    <fragment
-            android:id="@+id/fragment_feedlist"
-            android:name="cz.cvut.fit.biand.feedreader.screens.main.ArticlesListFragment"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+    <FrameLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/fragment_list_wrapper"
+        />
 </LinearLayout>

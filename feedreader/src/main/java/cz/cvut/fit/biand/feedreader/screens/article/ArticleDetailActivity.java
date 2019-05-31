@@ -15,19 +15,15 @@ import cz.cvut.fit.biand.feedreader.R;
 /**
  * Contains the {@link ArticleDetailFragment} which shows the full article.
  *
- * @author Ondrej Cermak
+ * @author lyalival
  */
 public class ArticleDetailActivity extends AppCompatActivity {
-    /**
-     * Extra with article's id.
-     */
+
     public static final String EXTRA_ID = ArticleDetailFragment.ARG_ID;
 
     /**
-     * Starts the activity.
-     *
-     * @param context The context.
-     * @param entryId The entry id to display.
+     * Method is using for starting the ArticleDetailActivity
+     * @param entryId is id of the entry to be shown
      */
     public static void startActivity(Context context, long entryId) {
         Intent intent = new Intent(context, ArticleDetailActivity.class);
@@ -51,9 +47,6 @@ public class ArticleDetailActivity extends AppCompatActivity {
         addArticleDetailFragment();
     }
 
-    /**
-     * Adds the {@link ArticleDetailFragment} to the layout.
-     */
     private void addArticleDetailFragment() {
         FragmentManager manager = getSupportFragmentManager();
         if (manager.findFragmentById(R.id.container) == null) {
@@ -63,11 +56,6 @@ public class ArticleDetailActivity extends AppCompatActivity {
         }
     }
 
-    /**
-     * Creates the {@link ArticleDetailFragment} with the correct arguments.
-     *
-     * @return The Article fragment.
-     */
     private Fragment createArticleDetailFragment() {
         return Fragment.instantiate(this, ArticleDetailFragment.class.getName(),
                                     getIntent().getExtras());

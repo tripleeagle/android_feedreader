@@ -32,17 +32,14 @@ public class DownloadTask {
     }
 
     public void downloadFeeds() {
-        Log.d ("TAG","called");
         if (parseFeedTask == null || parseFeedTask.getStatus() == AsyncTask.Status.FINISHED)
         {
             parseFeedTask = new ParseFeedTask(repository, repository.getDownloadStatus());
             LiveData<List<String>> urlsLiveData = repository.getAllFeedDownloadUrls();
-            Log.d ("TAG","inside downloadFeeds");
             urlsLiveData .observeForever( new Observer<List<String>>() {
                 @Override
                 public void onChanged(List<String> urls) {
                     if ( !urls.isEmpty()) {
-                        Log.d ("TAG","downloadFeeds called executed");
                         // Wait till there's at least one Feed to download.
                         urlsLiveData.removeObserver(this);
                         parseFeedTask.execute(urls.toArray(new String[0]));

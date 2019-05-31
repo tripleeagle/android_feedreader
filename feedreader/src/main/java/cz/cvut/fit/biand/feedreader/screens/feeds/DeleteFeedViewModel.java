@@ -15,11 +15,6 @@ public class DeleteFeedViewModel extends AndroidViewModel {
         repository = FeedReaderApplication.get(application).getRepository();
     }
 
-    /**
-     * Deletes feed with {@code feedId}.
-     *
-     * @param feedId The feed id.
-     */
     void deleteFeed(long feedId) {
         repository.deleteFeed(feedId);
     }

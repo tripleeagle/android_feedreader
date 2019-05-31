@@ -12,7 +12,7 @@ import cz.cvut.fit.biand.feedreader.R;
 /**
  * Contains the {@link FeedConfigurationFragment} which shows the list of added Feeds.
  *
- * @author Ondrej Cermak
+ * @author lyalival
  */
 public class FeedConfigurationActivity extends AppCompatActivity {
     @Override
@@ -27,9 +27,6 @@ public class FeedConfigurationActivity extends AppCompatActivity {
         addFeedConfigurationFragment();
     }
 
-    /**
-     * Adds the {@link FeedConfigurationFragment} to the layout.
-     */
     private void addFeedConfigurationFragment() {
         FragmentManager manager = getSupportFragmentManager();
         if (manager.findFragmentById(R.id.container) == null) {

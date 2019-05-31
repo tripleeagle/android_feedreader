@@ -20,7 +20,7 @@ import cz.cvut.fit.biand.feedreader.R;
 /**
  * Dialog for adding a Feed.
  *
- * @author Ondrej Cermak
+ * @author lyalival
  */
 public class AddFeedDialog extends DialogFragment {
 
@@ -28,11 +28,6 @@ public class AddFeedDialog extends DialogFragment {
 
     private EditText feedUrl;
 
-    /**
-     * Shows the {@link AddFeedDialog}.
-     *
-     * @param fragmentManager The fragment manager.
-     */
     public static void show(FragmentManager fragmentManager) {
         String tag = AddFeedDialog.class.getCanonicalName();
         FragmentTransaction transaction = fragmentManager.beginTransaction();

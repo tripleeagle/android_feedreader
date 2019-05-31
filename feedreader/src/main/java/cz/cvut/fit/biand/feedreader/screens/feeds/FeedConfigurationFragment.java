@@ -22,7 +22,7 @@ import cz.cvut.fit.biand.feedreader.repository.entities.Feed;
 /**
  * Shows the list of added Feeds.
  *
- * @author Ondrej Cermak
+ * @author lyalival
  */
 public class FeedConfigurationFragment extends Fragment implements
         FeedsAdapter.FeedClickedListener {
@@ -67,9 +67,6 @@ public class FeedConfigurationFragment extends Fragment implements
         });
     }
 
-    /**
-     * Shows/hides the "empty text".
-     */
     private void showEmptyText(@Nullable String text) {
         emptyText.setText(text);
         emptyText.setVisibility(TextUtils.isEmpty(text) ? View.GONE : View.VISIBLE);

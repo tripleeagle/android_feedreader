@@ -19,45 +19,24 @@ public class Feed {
     @ColumnInfo(name = "id")
     private final Long id;
 
-    /**
-     * Uri/id of the feed.
-     */
     @ColumnInfo(name = "uri")
     private final String uri;
 
-    /**
-     * The original URL used to download the feed.
-     */
     @ColumnInfo(name = "download_url")
     private final String downloadUrl;
 
-    /**
-     * Link to the feed.
-     */
     @ColumnInfo(name = "link")
     private final String link;
 
-    /**
-     * Title of the feed.
-     */
     @ColumnInfo(name = "title")
     private final String title;
 
-    /**
-     * Subtitle/description of the feed.
-     */
     @ColumnInfo(name = "subtitle")
     private final String subtitle;
 
-    /**
-     * The date the feed was last updated (in millis since epoch).
-     */
     @ColumnInfo(name = "update_date")
     private final Date updatedDate;
 
-    /**
-     * The default author of the feed.
-     */
     @ColumnInfo(name = "author")
     private final String author;
 

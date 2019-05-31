@@ -21,18 +21,8 @@ import cz.cvut.fit.biand.feedreader.repository.entities.Feed;
 @Database(entities = {Feed.class, Entry.class}, version = FeedReaderDatabase.DB_VERSION)
 @TypeConverters({DateConverter.class})
 public abstract class FeedReaderDatabase extends RoomDatabase {
-    /**
-     * The name of the database file.
-     */
-    private static final String DB_NAME = "feedreader.db";
 
-    /**
-     * The current version of the database schema. It must be increased every time table is
-     * added/removed/edited and the update from the previous version must be properly handled in the
-     * {@link androidx.room.migration.Migration} instance.
-     *
-     * @see RoomDatabase.Builder#addMigrations(Migration...)
-     */
+    private static final String DB_NAME = "feedreader.db";
     static final int DB_VERSION = 1;
 
     @Nullable

@@ -28,12 +28,10 @@ import cz.cvut.fit.biand.feedreader.repository.entities.Entry;
 /**
  * Shows the full article.
  *
- * @author Ondrej Cermak
+ * @author lyalival
  */
 public class ArticleDetailFragment extends Fragment {
-    /**
-     * Argument with article entry's id.
-     */
+
     static final String ARG_ID = "id";
 
     private ArticleDetailViewModel viewModel;
@@ -118,9 +116,6 @@ public class ArticleDetailFragment extends Fragment {
         });
     }
 
-    /**
-     * Updates the views with the entry contents.
-     */
     private void updateViewsWithContent(Entry entry) {
         title.setText(Html.fromHtml(entry.getTitle()));
         String author = entry.getAuthor();

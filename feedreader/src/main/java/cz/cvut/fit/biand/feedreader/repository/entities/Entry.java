@@ -28,51 +28,27 @@ public class Entry {
     @ColumnInfo(name = "id")
     private final Long id;
 
-    /**
-     * The _ID of the feed.
-     */
     @ColumnInfo(name = "feed_id")
     private final Long feedId;
 
-    /**
-     * Uri/id of the feed entry.
-     */
     @ColumnInfo(name = "uri")
     private final String uri;
 
-    /**
-     * The link to the entry.
-     */
     @ColumnInfo(name = "link")
     private final String link;
 
-    /**
-     * The title of the entry.
-     */
     @ColumnInfo(name = "title")
     private final String title;
 
-    /**
-     * The summary of the entry.
-     */
     @ColumnInfo(name = "summary")
     private final String summary;
 
-    /**
-     * The content of the entry.
-     */
     @ColumnInfo(name = "content")
     private final String content;
 
-    /**
-     * The date the entry was last updated (in millis since epoch).
-     */
     @ColumnInfo(name = "update_date")
     private final Date updatedDate;
 
-    /**
-     * The author of the entry.
-     */
     @ColumnInfo(name = "author")
     private final String author;
 

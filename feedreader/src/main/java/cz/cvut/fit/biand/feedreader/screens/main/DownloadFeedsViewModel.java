@@ -52,9 +52,6 @@ public class DownloadFeedsViewModel extends AndroidViewModel {
         cancelDownload();
     }
 
-    /**
-     * Cancels a running download if there's one.
-     */
     private void cancelDownload() {
         if (downloadTask != null) {
             downloadTask.cancel(true);
@@ -62,11 +59,7 @@ public class DownloadFeedsViewModel extends AndroidViewModel {
         }
     }
 
-
-    // Notice we return LiveData and not MutableLiveData. It's always good to limit access as much
-    // as possible to avoid stupid bugs.
     LiveData<DownloadStatus> getDownloadStatus() {
         return repository.getDownloadStatus();
     }
-
 }

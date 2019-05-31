@@ -16,7 +16,7 @@ import cz.cvut.fit.biand.feedreader.R;
 /**
  * Dialog for deleting a Feed.
  *
- * @author Ondrej Cermak
+ * @author lyalival
  */
 public class DeleteFeedDialog extends DialogFragment {
     private static final String ARG_FEED_ID = "feed_id";
@@ -25,11 +25,6 @@ public class DeleteFeedDialog extends DialogFragment {
 
     private DeleteFeedViewModel viewModel;
 
-    /**
-     * Shows the {@link cz.cvut.fit.biand.feedreader.screens.feeds.DeleteFeedDialog}.
-     *
-     * @param fragmentManager The fragment manager.
-     */
     public static void show(FragmentManager fragmentManager, long feedId) {
         String tag = DeleteFeedDialog.class.getCanonicalName();
         FragmentTransaction transaction = fragmentManager.beginTransaction();

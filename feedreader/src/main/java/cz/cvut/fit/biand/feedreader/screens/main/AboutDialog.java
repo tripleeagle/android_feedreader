@@ -22,21 +22,12 @@ import cz.cvut.fit.biand.feedreader.R;
 /**
  * Dialog showing the 'about' text.
  *
- * @author Ondrej Cermak
+ * @author lyalival
  */
 public class AboutDialog extends DialogFragment {
-    /**
-     * The tag of this fragment for use with the {@link FragmentManager}.
-     */
     private static final String FRAGMENT_TAG = "about_dialog";
-
     private static final String LOG_TAG = "AboutDialog";
 
-    /**
-     * Shows the dialog.
-     *
-     * @param manager The fragment manager.
-     */
     public static void show(FragmentManager manager) {
         Fragment fragment = manager.findFragmentByTag(FRAGMENT_TAG);
         // If the fragment is already added, don't create a new one

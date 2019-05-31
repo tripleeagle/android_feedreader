@@ -1,15 +1,19 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:id="@+id/large_container">
 
-    <fragment
-        android:id="@+id/fragment_feedlist"
-        android:name="cz.cvut.fit.biand.feedreader.screens.main.ArticlesListFragment"
-        android:layout_width="320dp"
-        android:layout_height="match_parent" />
+
     <FrameLayout
-        android:id="@+id/fragmentRight"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="320dp"
+        android:layout_height="match_parent"
+        android:id="@+id/fragment_list_wrapper"
+        />
+
+    <FrameLayout
+        android:id="@+id/fragmentRightPlaceHolder"
         android:layout_width="320dp"
         android:layout_height="match_parent"
         android:layout_weight="1">

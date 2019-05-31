@@ -2,6 +2,7 @@ package cz.cvut.fit.biand.feedreader.screens.main;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -26,7 +27,7 @@ import cz.cvut.fit.biand.feedreader.screens.article.ArticleDetailFragment;
 /**
  * Shows the list of articles from the feed.
  *
- * @author Ondrej Cermak
+ * @author lyalival
  */
 public class ArticlesListFragment extends Fragment implements FeedEntriesAdapter.EntryClickedListener {
     private ArticlesListViewModel viewModel;
@@ -41,6 +42,9 @@ public class ArticlesListFragment extends Fragment implements FeedEntriesAdapter
 
     private boolean wideScreen;
 
+    public static final String EXTRA_LARGE_SCREEN = "largeScreen";
+
+
     @SuppressLint("InflateParams")
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -52,14 +56,12 @@ public class ArticlesListFragment extends Fragment implements FeedEntriesAdapter
         progressActionView =
                 LayoutInflater.from(getActivity()).inflate(R.layout.action_view_progress, null);
 
+        wideScreen = getArguments().getBoolean(EXTRA_LARGE_SCREEN);
         // Retains the ParseFeedTask and the FeedEntriesAdapter with loaded data.
         setRetainInstance(true);
         setHasOptionsMenu(true);
     }
 
-    /**
-     * Loads the feed entries and displays them.
-     */
     private void refreshFeed(boolean initialRefresh) {
         downloadFeedsViewModel.downloadFeeds(this, initialRefresh);
     }
@@ -68,9 +70,7 @@ public class ArticlesListFragment extends Fragment implements FeedEntriesAdapter
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-
-
-        return inflater.inflate(R.layout.fragment_list, container, true);
+        return inflater.inflate(R.layout.fragment_list, container, false);
     }
 
     @Override
@@ -84,8 +84,6 @@ public class ArticlesListFragment extends Fragment implements FeedEntriesAdapter
         emptyText = view.findViewById(R.id.feed_list_empty_text);
         setTextForEmptyRecycler(getString(R.string.list_empty));
         showRecyclerOrEmptyText();
-
-        wideScreen = view.findViewById(R.id.large_display) != null;
 
         viewModel.getArticles().observe(this, entriesList -> {
             adapter.setData(entriesList);
@@ -123,16 +121,10 @@ public class ArticlesListFragment extends Fragment implements FeedEntriesAdapter
         });
     }
 
-    /**
-     * Sets the "empty text", which is a text displayed when the recycler is empty.
-     */
     private void setTextForEmptyRecycler(@Nullable String text) {
         emptyText.setText(text);
     }
 
-    /**
-     * Shows the recycler or "empty text" if recycler is empty.
-     */
     private void showRecyclerOrEmptyText() {
         emptyText.setVisibility(adapter.getItemCount() > 0 ? View.GONE : View.VISIBLE);
         recyclerView.setVisibility(adapter.getItemCount() > 0 ? View.VISIBLE : View.GONE);
@@ -146,7 +138,8 @@ public class ArticlesListFragment extends Fragment implements FeedEntriesAdapter
             bundle.putLong(ArticleDetailActivity.EXTRA_ID, entry.getId());
             fragment2.setArguments(bundle);
 
-            getFragmentManager().beginTransaction().replace(R.id.fragmentRight, fragment2).commit();
+            getFragmentManager().beginTransaction().replace(R.id.fragmentRightPlaceHolder, fragment2).commit();
+
         } else {
             ArticleDetailActivity.startActivity(getActivity(), entry.getId());
         }
@@ -165,9 +158,6 @@ public class ArticlesListFragment extends Fragment implements FeedEntriesAdapter
         }
     }
 
-    /**
-     * Shows progress bar in the Refresh menu item.
-     */
     private void showProgressInRefreshItem() {
         refreshItem.setActionView(progressActionView);
     }

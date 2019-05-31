@@ -19,11 +19,6 @@ public class AddFeedViewModel extends AndroidViewModel {
         repository = FeedReaderApplication.get(application).getRepository();
     }
 
-    /**
-     * Adds a new feed with {@code feedUrl}.
-     *
-     * @param feedUrl The url of the feed.
-     */
     void addFeed(String feedUrl) {
         repository.saveFeed(new Feed(feedUrl));
         // We don't download the new feed automatically so we can test that the Refresh button
