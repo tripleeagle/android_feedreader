@@ -42,12 +42,13 @@ public class ArticleDetailFragment extends Fragment {
     private TextView text;
     private TextView fullArticle;
     private Long id;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         viewModel = ViewModelProviders.of(this).get(ArticleDetailViewModel.class);
         id = getArguments().getLong(ARG_ID);
-        Log.d("TAG","id = " + id );
+        Log.d("TAG", "id = " + id);
         viewModel.setEntryId(getArguments().getLong(ARG_ID));
         setHasOptionsMenu(true);
     }
@@ -63,8 +64,8 @@ public class ArticleDetailFragment extends Fragment {
 
     @Override
     public void onSaveInstanceState(@NonNull Bundle outState) {
-        outState.putLong(ARG_ID,id);
-        Log.d("TAG","saved id = " + id );
+        outState.putLong(ARG_ID, id);
+        Log.d("TAG", "saved id = " + id);
         super.onSaveInstanceState(outState);
     }
 
@@ -152,15 +153,15 @@ public class ArticleDetailFragment extends Fragment {
                 viewModel.getArticle().observe(this, entry -> {
                     if (entry == null) {
                         Toast.makeText(getActivity(), R.string.entry_not_loaded, Toast.LENGTH_LONG)
-                             .show();
+                                .show();
                         return;
                     }
                     Intent shareIntent = new Intent(Intent.ACTION_SEND);
                     shareIntent.setType("text/plain");
                     shareIntent.putExtra(Intent.EXTRA_SUBJECT,
-                                         getString(R.string.share_subject, entry.getTitle()));
+                            getString(R.string.share_subject, entry.getTitle()));
                     shareIntent.putExtra(Intent.EXTRA_TEXT,
-                                         getString(R.string.share_text, entry.getLink()));
+                            getString(R.string.share_text, entry.getLink()));
                     Intent chooser =
                             Intent.createChooser(shareIntent, getString(R.string.share_chooser));
                     startActivity(chooser);

@@ -2,7 +2,9 @@ package cz.cvut.fit.biand.feedreader.screens.main;
 
 import android.app.Application;
 import android.os.AsyncTask;
+
 import java.util.List;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.lifecycle.AndroidViewModel;

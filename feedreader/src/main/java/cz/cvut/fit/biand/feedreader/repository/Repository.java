@@ -82,7 +82,7 @@ public class Repository {
 
     private Feed createFeedFromSyndFeed(@Nullable Long id, String downloadUrl, SyndFeed syndFeed) {
         return new Feed(id, syndFeed.getUri(), downloadUrl, syndFeed.getLink(), syndFeed.getTitle(),
-                             syndFeed.getDescription(), new Date(), syndFeed.getAuthor());
+                syndFeed.getDescription(), new Date(), syndFeed.getAuthor());
     }
 
     private void saveSyndFeedEntries(long feedId, List<SyndEntry> entries) {
@@ -95,7 +95,7 @@ public class Repository {
             }
         }
     }
-    
+
     private Entry createEntryFromSyndEntry(@Nullable Long id, long feedId, SyndEntry syndEntry) {
         String desc;
         if (syndEntry.getDescription() != null) {
@@ -122,10 +122,10 @@ public class Repository {
                 date = new Date(0);
             }
         }
-        
+
         return new Entry(id, feedId, syndEntry.getUri(), syndEntry.getLink(),
-                         syndEntry.getTitle(), prepareSummary(desc), content, date,
-                         syndEntry.getAuthor());
+                syndEntry.getTitle(), prepareSummary(desc), content, date,
+                syndEntry.getAuthor());
     }
 
     private String prepareSummary(String text) {
@@ -150,7 +150,7 @@ public class Repository {
         return downloadStatus;
     }
 
-    public void changeStatusValue ( DownloadStatus downloadStatus ){
+    public void changeStatusValue(DownloadStatus downloadStatus) {
         this.downloadStatus.setValue(downloadStatus);
     }
 }

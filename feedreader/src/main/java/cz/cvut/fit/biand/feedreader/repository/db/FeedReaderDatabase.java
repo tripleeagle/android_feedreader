@@ -11,7 +11,6 @@ import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.room.TypeConverters;
-import androidx.room.migration.Migration;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 import cz.cvut.fit.biand.feedreader.repository.dao.EntryDao;
 import cz.cvut.fit.biand.feedreader.repository.dao.FeedDao;
@@ -22,9 +21,8 @@ import cz.cvut.fit.biand.feedreader.repository.entities.Feed;
 @TypeConverters({DateConverter.class})
 public abstract class FeedReaderDatabase extends RoomDatabase {
 
-    private static final String DB_NAME = "feedreader.db";
     static final int DB_VERSION = 1;
-
+    private static final String DB_NAME = "feedreader.db";
     @Nullable
     private static FeedReaderDatabase instance;
 
@@ -33,7 +31,7 @@ public abstract class FeedReaderDatabase extends RoomDatabase {
             Context appContext = context.getApplicationContext();
             instance = Room
                     .databaseBuilder(appContext,
-                                     FeedReaderDatabase.class, DB_NAME)
+                            FeedReaderDatabase.class, DB_NAME)
                     .addCallback(new Callback() {
                         @Override
                         public void onCreate(@NonNull SupportSQLiteDatabase db) {
@@ -60,7 +58,7 @@ public abstract class FeedReaderDatabase extends RoomDatabase {
 
         Feed technetFeed = new Feed(null, "", "http://servis.idnes.cz/rss.aspx?c=technet", "", "", "", new Date(0), "");
         Feed androidDevelopersFeed =
-                new Feed(null, "", "http://android-developers.blogspot.com/atom.xml", "","", "", new Date(0), "");
+                new Feed(null, "", "http://android-developers.blogspot.com/atom.xml", "", "", "", new Date(0), "");
         dao.insertFeed(technetFeed);
         dao.insertFeed(androidDevelopersFeed);
     }

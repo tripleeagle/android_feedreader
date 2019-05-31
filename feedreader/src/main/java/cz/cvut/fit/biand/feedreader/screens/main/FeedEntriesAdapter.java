@@ -16,13 +16,9 @@ import cz.cvut.fit.biand.feedreader.R;
 import cz.cvut.fit.biand.feedreader.repository.entities.Entry;
 
 public class FeedEntriesAdapter extends RecyclerView.Adapter<FeedEntriesAdapter.ViewHolder> {
-    public interface EntryClickedListener {
-        void onEntryClicked(Entry entry);
-    }
     private final LayoutInflater inflater;
     private final EntryClickedListener listener;
     private List<Entry> data = new ArrayList<>(0);
-
     public FeedEntriesAdapter(LayoutInflater inflater, EntryClickedListener listener) {
         this.inflater = inflater;
         this.listener = listener;
@@ -48,6 +44,10 @@ public class FeedEntriesAdapter extends RecyclerView.Adapter<FeedEntriesAdapter.
     @Override
     public int getItemCount() {
         return data.size();
+    }
+
+    public interface EntryClickedListener {
+        void onEntryClicked(Entry entry);
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {

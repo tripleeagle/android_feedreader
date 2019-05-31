@@ -2,7 +2,6 @@ package cz.cvut.fit.biand.feedreader.screens.main;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -30,19 +29,15 @@ import cz.cvut.fit.biand.feedreader.screens.article.ArticleDetailFragment;
  * @author lyalival
  */
 public class ArticlesListFragment extends Fragment implements FeedEntriesAdapter.EntryClickedListener {
+    public static final String EXTRA_LARGE_SCREEN = "largeScreen";
     private ArticlesListViewModel viewModel;
     private DownloadFeedsViewModel downloadFeedsViewModel;
-
     private FeedEntriesAdapter adapter;
     private MenuItem refreshItem;
-
     private RecyclerView recyclerView;
     private TextView emptyText;
     private View progressActionView;
-
     private boolean wideScreen;
-
-    public static final String EXTRA_LARGE_SCREEN = "largeScreen";
 
     @SuppressLint("InflateParams")
     @Override
@@ -101,8 +96,8 @@ public class ArticlesListFragment extends Fragment implements FeedEntriesAdapter
                     break;
                 case FAILED:
                     Toast.makeText(getActivity(), getString(R.string.list_loading_failed),
-                                   Toast.LENGTH_SHORT)
-                         .show();
+                            Toast.LENGTH_SHORT)
+                            .show();
                     if (refreshItem != null) {
                         refreshItem.setActionView(null);
                     }
@@ -129,7 +124,7 @@ public class ArticlesListFragment extends Fragment implements FeedEntriesAdapter
 
     @Override
     public void onEntryClicked(Entry entry) {
-        if ( wideScreen ){
+        if (wideScreen) {
             Fragment fragment2 = new ArticleDetailFragment();
             Bundle bundle = new Bundle();
             bundle.putLong(ArticleDetailActivity.EXTRA_ID, entry.getId());

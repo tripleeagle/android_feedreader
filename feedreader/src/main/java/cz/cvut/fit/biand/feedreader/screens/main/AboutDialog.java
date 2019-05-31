@@ -1,7 +1,5 @@
 package cz.cvut.fit.biand.feedreader.screens.main;
 
-import java.util.Calendar;
-
 import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
@@ -12,6 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+
+import java.util.Calendar;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.DialogFragment;

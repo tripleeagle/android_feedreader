@@ -32,8 +32,8 @@ public class FeedConfigurationActivity extends AppCompatActivity {
         if (manager.findFragmentById(R.id.container) == null) {
             FragmentTransaction transaction = manager.beginTransaction();
             Fragment feedsFragment = Fragment.instantiate(this,
-                                                          FeedConfigurationFragment.class
-                                                                  .getName());
+                    FeedConfigurationFragment.class
+                            .getName());
             transaction.add(R.id.container, feedsFragment);
             transaction.commit();
         }

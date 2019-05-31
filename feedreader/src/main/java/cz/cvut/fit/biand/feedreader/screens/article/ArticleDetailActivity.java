@@ -23,6 +23,7 @@ public class ArticleDetailActivity extends AppCompatActivity {
 
     /**
      * Method is using for starting the ArticleDetailActivity
+     *
      * @param entryId is id of the entry to be shown
      */
     public static void startActivity(Context context, long entryId) {
@@ -58,6 +59,6 @@ public class ArticleDetailActivity extends AppCompatActivity {
 
     private Fragment createArticleDetailFragment() {
         return Fragment.instantiate(this, ArticleDetailFragment.class.getName(),
-                                    getIntent().getExtras());
+                getIntent().getExtras());
     }
 }

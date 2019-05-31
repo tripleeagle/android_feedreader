@@ -8,16 +8,7 @@ import java.util.List;
 import androidx.annotation.Nullable;
 
 class AsyncRoomOp<Entity, Result> extends AsyncTask<Entity, Void, List<Result>> {
-    interface AsyncBlock<Entity, Result> {
-        Result insert(Entity entity);
-    }
-
-    interface Callback<Result> {
-        void onComplete(List<Result> results);
-    }
-
     private final AsyncBlock<Entity, Result> block;
-
     @Nullable
     private final Callback<Result> callback;
 
@@ -45,5 +36,13 @@ class AsyncRoomOp<Entity, Result> extends AsyncTask<Entity, Void, List<Result>> 
         if (callback != null) {
             callback.onComplete(results);
         }
+    }
+
+    interface AsyncBlock<Entity, Result> {
+        Result insert(Entity entity);
+    }
+
+    interface Callback<Result> {
+        void onComplete(List<Result> results);
     }
 }

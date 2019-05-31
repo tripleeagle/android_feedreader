@@ -5,8 +5,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.LinearLayout;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -29,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        if ( savedInstanceState == null) {
+        if (savedInstanceState == null) {
             addFragments();
         }
     }
@@ -39,22 +37,22 @@ public class MainActivity extends AppCompatActivity {
      */
     private void addFragments() {
         FragmentManager manager = getSupportFragmentManager();
-        if ( findViewById(R.id.container) != null && manager.findFragmentById(R.id.container) == null) {
+        if (findViewById(R.id.container) != null && manager.findFragmentById(R.id.container) == null) {
             FragmentTransaction transaction = manager.beginTransaction();
-            transaction.replace(R.id.fragment_list_wrapper,createArticleListFragment(false));
+            transaction.replace(R.id.fragment_list_wrapper, createArticleListFragment(false));
             transaction.commit();
         }
-        if ( findViewById(R.id.large_container) != null && manager.findFragmentById(R.id.large_container) == null ){
-            Log.d("TAG","add once again");
+        if (findViewById(R.id.large_container) != null && manager.findFragmentById(R.id.large_container) == null) {
+            Log.d("TAG", "add once again");
             FragmentTransaction transaction = manager.beginTransaction();
-            transaction.replace(R.id.fragment_list_wrapper,createArticleListFragment(true));
-            transaction.replace(R.id.fragmentRightPlaceHolder,createArticleDetailFragment());
+            transaction.replace(R.id.fragment_list_wrapper, createArticleListFragment(true));
+            transaction.replace(R.id.fragmentRightPlaceHolder, createArticleDetailFragment());
             transaction.commit();
         }
     }
 
-    private Fragment createArticleListFragment( boolean isWideScreen ) {
-        getIntent().putExtra(ArticlesListFragment.EXTRA_LARGE_SCREEN,isWideScreen);
+    private Fragment createArticleListFragment(boolean isWideScreen) {
+        getIntent().putExtra(ArticlesListFragment.EXTRA_LARGE_SCREEN, isWideScreen);
         return Fragment.instantiate(this, ArticlesListFragment.class.getName(),
                 getIntent().getExtras());
     }

@@ -15,13 +15,9 @@ import cz.cvut.fit.biand.feedreader.R;
 import cz.cvut.fit.biand.feedreader.repository.entities.Feed;
 
 public class FeedsAdapter extends RecyclerView.Adapter<FeedsAdapter.ViewHolder> {
-    public interface FeedClickedListener {
-        void onFeedClicked(Feed feed);
-    }
     private final LayoutInflater inflater;
     private final FeedClickedListener listener;
     private List<Feed> data = new ArrayList<>(0);
-
     public FeedsAdapter(LayoutInflater inflater, FeedClickedListener listener) {
         this.inflater = inflater;
         this.listener = listener;
@@ -49,6 +45,10 @@ public class FeedsAdapter extends RecyclerView.Adapter<FeedsAdapter.ViewHolder> 
         return data.size();
     }
 
+    public interface FeedClickedListener {
+        void onFeedClicked(Feed feed);
+    }
+
     class ViewHolder extends RecyclerView.ViewHolder {
         private final FeedClickedListener listener;
         private final TextView title;
@@ -66,9 +66,9 @@ public class FeedsAdapter extends RecyclerView.Adapter<FeedsAdapter.ViewHolder> 
 
             String feedTitle = feed.getTitle();
             title.setText(TextUtils.isEmpty(feedTitle) ?
-                                         itemView.getContext().getText(
-                                                 R.string.feed_configuration_unknown_feed_title) :
-                                         feedTitle);
+                    itemView.getContext().getText(
+                            R.string.feed_configuration_unknown_feed_title) :
+                    feedTitle);
             url.setText(feed.getDownloadUrl());
         }
     }

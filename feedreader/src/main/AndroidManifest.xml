@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest package="cz.cvut.fit.biand.feedreader"
-          xmlns:android="http://schemas.android.com/apk/res/android"
-          xmlns:tools="http://schemas.android.com/tools">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="cz.cvut.fit.biand.feedreader">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-            android:name=".FeedReaderApplication"
-            android:allowBackup="false"
-            android:icon="@mipmap/ic_launcher"
-            android:label="@string/app_name"
-            android:theme="@style/Theme.Feedreader"
-            android:networkSecurityConfig="@xml/network_security_config"
-            tools:ignore="GoogleAppIndexingWarning">
+        android:name=".FeedReaderApplication"
+        android:allowBackup="false"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:networkSecurityConfig="@xml/network_security_config"
+        android:theme="@style/Theme.Feedreader"
+        tools:ignore="GoogleAppIndexingWarning">
 
         <activity
-                android:name=".screens.main.MainActivity"
-                android:label="@string/app_name">
+            android:name=".screens.main.MainActivity"
+            android:label="@string/app_name">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -25,8 +25,8 @@
         </activity>
 
         <activity
-                android:name=".screens.article.ArticleDetailActivity"
-                android:parentActivityName=".screens.main.MainActivity">
+            android:name=".screens.article.ArticleDetailActivity"
+            android:parentActivityName=".screens.main.MainActivity">
 
             <intent-filter>
                 <data android:mimeType="vnd.android.cursor.item/cz.cvut.fit.biand.feedreader.provider.entry" />
@@ -35,12 +35,12 @@
         </activity>
 
         <activity
-                android:name=".screens.feeds.FeedConfigurationActivity"
-                android:parentActivityName=".screens.main.MainActivity"/>
+            android:name=".screens.feeds.FeedConfigurationActivity"
+            android:parentActivityName=".screens.main.MainActivity" />
 
         <service
             android:name=".repository.services.DownloadFeedJobService"
-            android:permission="android.permission.BIND_JOB_SERVICE"/>
+            android:permission="android.permission.BIND_JOB_SERVICE" />
 
     </application>
 
